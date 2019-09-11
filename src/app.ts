@@ -4,7 +4,7 @@ import * as express from "express";
 
 import * as bodyParser from "body-parser";
 import { Routes } from "./routes";
-
+const path = require('path')
 class App {
 
   public app: express.Application;
@@ -20,6 +20,7 @@ class App {
   }
 
   private config(): void{
+      this.app.use(express.static(path.join(__dirname, "client")));
       this.app.use(bodyParser.json());
       this.app.use(bodyParser.urlencoded({ extended: false }));
   }
